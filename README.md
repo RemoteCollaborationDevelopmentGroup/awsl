@@ -1,4 +1,7 @@
 # awsl
+demo
+https://satori.love
+
 
 ## Build Setup
 
@@ -12,6 +15,9 @@ $ yarn dev
 # build for production and launch server
 $ yarn build
 $ yarn start
+
+# or pm2
+$ yarn pm2
 
 # generate static project
 $ yarn generate
