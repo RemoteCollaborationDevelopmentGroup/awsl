@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	fmt.Println("23333------------")
+	fmt.Println("------ http3 server ------")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write([]byte("hello quic"))
 	})
-	http3.ListenAndServe("0.0.0.0:443", "./ssl/4790070_satori.love.pem", "./ssl/4790070_satori.love.key", nil)
+	http3.ListenAndServeQUIC("0.0.0.0:443", "./ssl/4790070_satori.love.pem", "./ssl/4790070_satori.love.key", nil)
 }
