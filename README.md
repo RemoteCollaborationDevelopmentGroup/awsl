@@ -1,6 +1,7 @@
 # awsl
 demo
 https://satori.love
+http://awsl.jzkjyl.com
 
 
 ## Build Setup
