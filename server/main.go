@@ -11,5 +11,5 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write([]byte("hello quic"))
 	})
-	http3.ListenAndServeQUIC("0.0.0.0:443", "./ssl/4790070_satori.love.pem", "./ssl/4790070_satori.love.key", nil)
+	http3.ListenAndServe("0.0.0.0:443", "./ssl/4790070_satori.love.pem", "./ssl/4790070_satori.love.key", nil)
 }
