@@ -1,16 +1,16 @@
 <template lang="pug">
 div.center.examplex
-  vs-navbar(target-scroll="#padding-scroll-content" center-collapsed v-model="active" style="position:fixed;")
-    template(#left)
-      img(src="/logo2.png" alt="awsl")
+  vs-navbar(target-scroll="#padding-scroll-content" padding-scroll center-collapsed v-model="active")
+    //template(#left)
+    //  img(src="/logo.jpg" alt="awsl" style="height:6em;")
     vs-navbar-item(to="/" :active="active == ''" id="") 开发组
     vs-navbar-item(to="/works" :active="active == 'works'" id="works") 作品集
     vs-navbar-item(to="/remote" :active="active == 'remote'" id="remote") 远程协作
     vs-navbar-item(to="/license" :active="active == 'license'" id="license") license
     template(#right)
-      vs-button(flat) Login
-      vs-button Get Started
-  div(id="padding-scroll-content" class="square")
+      vs-button(flat) Sign in
+      vs-button Sign up
+  div(id="padding-scroll-content" class="square" style="padding:120px 120px 64px 120px; min-height: 100vh;")
     Nuxt
     //div.child(style="height:18em;") child 1
     //div.child(style="height:18em;") child 2

@@ -1,7 +1,5 @@
 # awsl
 
-![w(ﾟДﾟ)w](assets/20201118142945.jpg)
-
 demo
 * https://satori.love
 * http://awsl.jzkjyl.com

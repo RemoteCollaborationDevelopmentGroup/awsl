@@ -17,8 +17,6 @@ div.container_works
 
 <style>
 .container_works {
-  margin: 6em auto;
-  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

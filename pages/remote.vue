@@ -1,8 +1,8 @@
 <template lang="pug">
-div.container_index
-  div 开发组能力范围 |
-  div 开发组成员 |
-  div 输出能力
+div.container_remote
+  div
+    img(src="/emmm.jpg" alt="awsl" style="height:10rem;")
+    p 施工中..
 </template>
 
 <script>
@@ -17,13 +17,12 @@ export default {
 }
 </script>
 
-<style>
-.container_index {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="styl">
+.container_remote
+  margin: 0 auto
+  height: calc(100vh - 120px - 64px)
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
 </style>
