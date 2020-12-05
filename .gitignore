@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 server/ssl/
+server/data/
 
 # Logs
 /logs
