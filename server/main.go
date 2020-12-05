@@ -1,25 +1,68 @@
 package main
 
 import (
-	"github.com/lucas-clemente/quic-go/http3"
-	"net/http"
-	"fmt"
 	"strings"
+	"strconv"
+	"net/http"
+	"encoding/binary"
+	"github.com/syndtr/goleveldb/leveldb"
 )
 
-func main() {
-	fmt.Println("------ http3 server ------")
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		_, _ = w.Write([]byte("hello quic"))
-	})
-	go http.ListenAndServe(":80", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			_host := strings.Split(r.Host, ":")
-			_host[1] = "443"
-			target := "https://" + strings.Join(_host, ":") + r.URL.Path
-			if len(r.URL.RawQuery) > 0 {
-				target += "?" + r.URL.RawQuery
-			}
-			http.Redirect(w, r, target, http.StatusTemporaryRedirect)
-		}))
-	http3.ListenAndServe("0.0.0.0:443", "./ssl/4790070_satori.love.pem", "./ssl/4790070_satori.love.key", nil)
+var database_user *leveldb.DB
+var database_task *leveldb.DB
+
+func init() {
+	var err error
+	database_user, err = leveldb.OpenFile("data/database_user", nil)
+	if err != nil { panic(err) }
+	database_task, err = leveldb.OpenFile("data/database_task", nil)
+	if err != nil { panic(err) }
 }
+
+func main() {
+	mux := http.NewServeMux()
+	//mux.Handle("/", &session{})
+	mux.Handle("/user/", &session{database_user})
+	mux.Handle("/task/", &session{database_task})
+	http.ListenAndServe(":8888", mux)
+}
+
+type session struct {
+	database *leveldb.DB
+}
+
+func (s *session) ServeHTTP(w http.ResponseWriter, r *http.Request)  {
+	switch r.Method {
+	case "OPTIONS":
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Headers", "Accept,Content-Type,Authorization")
+		w.WriteHeader(200)
+	case "GET":
+		data, err := s.database.Get(URLToID(r.URL.Path), nil)
+		if err != nil {
+			http.Error(w, "目标资源不存在", 404)
+			return
+		}
+		w.Write(data)
+	case "PUT":
+		w.Write([]byte("leveldb data"))
+	}
+}
+
+//func (s *session) authentication() {}
+//func (s *session) authorization() {}
+
+func URLToID(url string) []byte {
+	sp := strings.Split(url, "/")
+	if len(sp) != 3 {
+		return []byte{}
+	}
+	if num, err := strconv.Atoi(sp[2]); err != nil {
+		buf := make([]byte, 8)
+		binary.BigEndian.PutUint64(buf, uint64(num))
+		return buf
+	}
+	return []byte{}
+}
+

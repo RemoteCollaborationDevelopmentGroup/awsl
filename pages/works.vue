@@ -1,6 +1,6 @@
 <template lang="pug">
 div.container_works
-    vs-card(v-for="s in 8")
+    vs-card(v-for="s in 8" :key="s")
         template(#title)
             h3 Pot with a plant
         template(#img)

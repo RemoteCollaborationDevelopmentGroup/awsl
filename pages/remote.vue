@@ -1,8 +1,13 @@
 <template lang="pug">
 div.container_remote
   div
-    img(src="/emmm.jpg" alt="awsl" style="height:10rem;")
-    p 施工中..
+    div
+      img.NuxtImg(src="/emmm.jpg" alt="awsl" style="height:10rem;")
+      p 施工中..
+    div
+      span 软件 网络 交互 产品设计 服务
+    div
+      Task(v-for="i in 24" :key="i") {{ i }}
 </template>
 
 <script>
@@ -25,4 +30,12 @@ export default {
   justify-content: center
   align-items: center
   text-align: center
+
+.NuxtImg
+  animation: 1s appearx
+  margin: auto
+
+@keyframes appearx
+  0%
+    opacity: 0
 </style>

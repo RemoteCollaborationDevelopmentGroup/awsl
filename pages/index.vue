@@ -1,9 +1,9 @@
 <template lang="pug">
 div.container_index
-  vs-avatar(primary v-for="user in users" @click="open_user(user.id)")
+  vs-avatar(primary v-for="user in users" :key="user.id" @click="open_user(user.id)")
     template(v-if="user.avatar===''" #text) {{ user.name }}
     img(v-else src="user.avatar")
-
+  div 项目组 开发组 产品组 数据组
   //vs-avatar(success)
   //  template(#text) Evan You
   //vs-avatar(danger)
