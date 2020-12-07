@@ -7,7 +7,7 @@ div.container_remote
     div
       span 软件 网络 交互 产品设计 服务
     div
-      Task(v-for="i in 24" :key="i") {{ i }}
+      Task(v-for="i in 8" :key="i") {{ i }}
 </template>
 
 <script>

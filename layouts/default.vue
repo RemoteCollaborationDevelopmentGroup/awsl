@@ -1,5 +1,6 @@
 <template lang="pug">
 div.center.examplex
+  div(style="width:120px;height:120px;background:#cc1414;color:#ffffff;")
   vs-navbar(target-scroll="#padding-scroll-content" padding-scroll center-collapsed v-model="active")
     //template(#left)
     //  img(src="/logo.jpg" alt="awsl" style="height:6em;")
@@ -25,6 +26,34 @@ export default {
   }),
   mounted() {
     console.log(this.active);
+    this.init_websocket()
+  },
+  methods: {
+    only_websocket() {},
+    init_websocket() {
+      if (!window["WebSocket"]) {
+        console.log("Your browser does not support WebSockets.")
+        this.append_log("Your browser does not support WebSockets.")
+        return
+      }
+
+      this.conn = new WebSocket("ws://" + document.location.host + "/ws")
+      this.conn.onclose = function (e) {
+        let message = e.stopImmediatePropagation.split('\n')
+        console.log(message)
+      }
+      this.conn.onmessage = function (e) {
+        var messages = e.data.split('\n')
+        console.log(message)
+      }
+      window.ws_send = (data) => {
+        if (!conn) {
+          console.log("Connection closed.")
+          return
+        }
+        conn.send(data)
+      }
+    }
   }
 }
 </script>
