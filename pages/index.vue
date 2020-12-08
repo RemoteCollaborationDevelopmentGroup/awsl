@@ -1,5 +1,6 @@
 <template lang="pug">
 div.container_index
+  CssConesInner
   vs-avatar(primary v-for="user in users" :key="user.id" @click="open_user(user.id)")
     template(v-if="user.avatar===''" #text) {{ user.name }}
     img(v-else src="user.avatar")
