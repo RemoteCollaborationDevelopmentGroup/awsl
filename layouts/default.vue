@@ -1,75 +1,84 @@
 <template lang="pug">
-div.center.examplex
+.center.examplex
   Online
-  vs-navbar(target-scroll="#padding-scroll-content" padding-scroll center-collapsed v-model="active")
-    //template(#left)
-    //  img(src="/logo.jpg" alt="awsl" style="height:6em;")
-    vs-navbar-item(to="/" :active="active == ''" id="") 开发组
-    vs-navbar-item(to="/works" :active="active == 'works'" id="works") 作品集
-    vs-navbar-item(to="/remote" :active="active == 'remote'" id="remote") 远程协作
-    vs-navbar-item(to="/license" :active="active == 'license'" id="license") license
+  vs-navbar(center-collapsed, v-model="active")
+    template(#left)
+    vs-navbar-item(
+      v-for="(item, i) in list",
+      :active="active == item.path",
+      :to="`/${item.path}`",
+      :key="i"
+    ) {{ item.name }}
     template(#right)
       vs-button(flat) Sign in
       vs-button Sign up
-  div(id="padding-scroll-content" class="square" style="padding:120px 120px 64px 120px; min-height: 100vh;")
+  #padding-scroll-content.square(
+    style="padding: 120px 120px 64px 120px; min-height: 100vh"
+  )
     Nuxt
-    //div.child(style="height:18em;") child 1
-    //div.child(style="height:18em;") child 2
-    //div.child(style="height:18em;") child 3
-    //padding-scroll
 </template>
 
 <script>
 export default {
   data: ({ $route }) => ({
-    active: $route.path.replace('/', '')
+    active: $route.path.replace("/", ""),
+    list: [
+      { path: "", name: "start" },
+      { path: "member", name: "member" },
+      { path: "task", name: "task" },
+      { path: "project", name: "project" },
+      { path: "guild", name: "guild" },
+      //{ path: "works", name: "作品集" },
+      //{ path: "remote", name: "远程协作" },
+      { path: "license", name: "license" },
+    ],
   }),
+  watch: {
+    $route: {
+      handler: function (val, old) {
+        this.active = val.path.replace(/\//, "").replace(/\/.*$/g, "");
+      },
+    },
+  },
   mounted() {
     //console.log(this.active);
-    this.init_websocket()
+    this.init_websocket();
   },
   methods: {
     only_websocket() {},
     init_websocket() {
       if (!window["WebSocket"]) {
-        console.log("Your browser does not support WebSockets.")
-        this.append_log("Your browser does not support WebSockets.")
-        return
+        console.log("Your browser does not support WebSockets.");
+        this.append_log("Your browser does not support WebSockets.");
+        return;
       }
 
       //this.conn = new WebSocket("ws://" + document.location.host + "/ws")
-      this.conn = new WebSocket("wss://satori.love/ws")
+      this.conn = new WebSocket("wss://satori.love/ws");
       this.conn.onclose = function (e) {
-        let message = e.stopImmediatePropagation.split('\n')
-        console.log(message)
-      }
+        let message = e.stopImmediatePropagation.split("\n");
+        console.log(message);
+      };
       this.conn.onmessage = function (e) {
-        let message = e.data.split('\n')
-        console.log(message)
-      }
+        let message = e.data.split("\n");
+        console.log(message);
+      };
       window.ws_send = (data) => {
         if (!this.conn) {
-          console.log("Connection closed.")
-          return
+          console.log("Connection closed.");
+          return;
         }
-        this.conn.send(data)
-      }
-    }
-  }
-}
+        this.conn.send(data);
+      };
+    },
+  },
+};
 </script>
 
 <style>
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -77,6 +86,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 *,

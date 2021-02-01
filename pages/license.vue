@@ -6,16 +6,14 @@
         <span class="plus">+</span>
         <VuesaxLogo />
       </header>
-      <h1 class="title">
-        Nuxt.js + Vuesax
-      </h1>
+      <h1 class="title">Nuxt.js + Vuesax</h1>
       <h2 class="subtitle">
-        <a href="https://vuesax.com/">Vuesax</a> is a framework of ui components for <a href="https://vuejs.org/">Vuejs</a>, It was created to make new interfaces that have a new trend and are visually beautiful
+        <a href="https://vuesax.com/">Vuesax</a> is a framework of ui components
+        for <a href="https://vuejs.org/">Vuejs</a>, It was created to make new
+        interfaces that have a new trend and are visually beautiful
       </h2>
       <div class="links">
-        <h3 class="h3">
-          Vuesax
-        </h3>
+        <h3 class="h3">Vuesax</h3>
         <a
           href="https://vuesax.com/"
           target="_blank"
@@ -42,9 +40,7 @@
         </a>
       </div>
       <div class="links">
-        <h3 class="h3">
-          Nuxt.js
-        </h3>
+        <h3 class="h3">Nuxt.js</h3>
         <a
           href="https://nuxtjs.org/"
           target="_blank"
@@ -67,18 +63,18 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuesaxLogo from '~/components/VuesaxLogo.vue'
+import Logo from "~/components/Logo.vue";
+import VuesaxLogo from "~/components/VuesaxLogo.vue";
 
 export default {
   components: {
     Logo,
-    VuesaxLogo
-  }
-}
+    VuesaxLogo,
+  },
+};
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   min-height: calc(100vh - 120px - 64px);
@@ -86,19 +82,12 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 55px;
@@ -141,16 +130,8 @@ export default {
 }
 
 .h3 {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   margin: 10px;
 }
