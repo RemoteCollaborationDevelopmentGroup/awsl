@@ -1,8 +1,10 @@
 # awsl
 
-demo
-* https://satori.love
-* http://awsl.jzkjyl.com
+Main site
+
+* https://0x00000000.io
+
+
 
 
 ## Build Setup
@@ -19,7 +21,7 @@ $ yarn build
 $ yarn start
 
 # or pm2
-$ yarn pm2
+$ ./start.sh
 
 # generate static project
 $ yarn generate

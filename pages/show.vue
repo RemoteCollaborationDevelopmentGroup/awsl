@@ -1,5 +1,6 @@
 <template lang="pug">
 .show
+  h2 UI
   .uilist
     a(v-for="(item, i) in uilist", :key="i", :href="item.url", target="_blank")
       img(:src="item.img")
@@ -8,6 +9,17 @@
 
 <style lang="sass" scoped>
 .show
+  h2
+    margin: 0 1rem
+    padding: 0 1rem
+    border-left: 4px solid #108775
+    transition: all .25s
+    -moz-transition: all .25s
+    -webkit-transition: all .25s
+    -o-transition: all .25s
+  h2:hover
+    color: #108775
+    border-left: 4px solid #00C58E
   .uilist
     list-style: none
     display: flex
@@ -17,6 +29,8 @@
       margin: 1rem
       color: #555
       text-decoration: none
+    a:hover
+      color: #108775
 </style>
 
 <script>

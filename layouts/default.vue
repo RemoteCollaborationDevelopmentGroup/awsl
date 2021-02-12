@@ -57,8 +57,7 @@ export default {
         return;
       }
 
-      //this.conn = new WebSocket("ws://" + document.location.host + "/ws")
-      this.conn = new WebSocket("wss://satori.love/ws");
+      this.conn = new WebSocket("ws://" + document.location.host + "/ws");
       this.conn.onclose = function (e) {
         let message = e.stopImmediatePropagation.split("\n");
         console.log(message);

@@ -4,18 +4,19 @@ ol.start
   counter-reset: sectioncounter
   width: 200px
   li
-    font-size: 1.5rem
+    font-size: 1.2rem
   li:before
     content: counter(sectioncounter) ""
     counter-increment: sectioncounter
     color: #ffffff
-    background: #991144
+    background: #108775
     border-radius: 50%
-    width: 1em
-    height: 1em
+    width: 1.5rem
+    height: 1.5rem
     display: inline-block
     text-align: center
-    line-height: 1em
+    line-height: 1.5rem
+    font-size: 1rem
 ul
   list-style: none
   margin: 0
@@ -129,15 +130,6 @@ ul
     p 电子邮件
     p 微信群
     p qq
-  //vs-avatar(success)
-  //  template(#text) Evan You
-  //vs-avatar(danger)
-  //  i.bx.bx-user
-  //vs-avatar(warn)
-  //  i.bx.bx-hot
-  //vs-avatar(dark)
-  //  img(src="/avatars/avatar-5.png" alt="")
-  CssConesInner
 </template>
 
 <script>
