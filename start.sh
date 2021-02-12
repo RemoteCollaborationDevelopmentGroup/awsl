@@ -1,5 +1,5 @@
 git pull
-yarn build
+npm run build
 pm2 delete awsl
-pm2 start --name awsl yarn -- start
+pm2 start --name awsl npm -- run start
 
