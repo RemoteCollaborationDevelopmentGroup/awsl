@@ -6,8 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "pm2": "nuxt build && pm2 start npm --name awsl -- run start"
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "core-js": "^3.6.5",

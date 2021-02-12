@@ -27,9 +27,13 @@ export default {
       { path: "member", name: "member" },
       { path: "task", name: "task" },
       { path: "project", name: "project" },
+      { path: "idea", name: "idea" },
       { path: "guild", name: "guild" },
+      { path: "team", name: "team" },
+      { path: "laboratory", name: "laboratory" },
       //{ path: "works", name: "作品集" },
       //{ path: "remote", name: "远程协作" },
+      { path: "show", name: "show" },
       { path: "license", name: "license" },
     ],
   }),
@@ -87,7 +91,6 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
 body::-webkit-scrollbar {
   display: none;
 }

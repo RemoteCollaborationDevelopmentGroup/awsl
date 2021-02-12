@@ -1,43 +1,49 @@
 <template lang="pug">
 .task
   h1 Task
-  p this task list
-  div
-    NuxtLink(v-for="(item, i) in list", :key="i", :to="`/task/${item.name}`")
-      h5 {{ item.name }}
-      p {{ item.info }}
-      div
-        button 关注
-        button 领取
-  NuxtChild
+  .header
+    .type
+      span 开发
+      span 设计
+      span 产品
+      span 文案
+      span 市场
+
+    p 筛选器(每次选择都以最佳筛选为主)
+    // 任务类型: 前端, 后端 (大分类/小标签/项目风格/架构)
+    // 排序方法: 时间, 价格, 热度
+    .taglist
+  .list
+    .item(v-for="i in 4", :key="i")
+      .name 任务名 (关注/不喜欢)
+      .content 实施过程和方式
+      .content 项目架构和技术栈
+      .content 验收标准
+      .info --某项目
 </template>
 
 <style lang="sass" scoped>
 .task
-  a
-    display: block
-    background: rgba(0, 0, 0, 0.05)
-    border-radius: 5px
-    margin: 0.5rem
-    padding: 0.5rem 1rem
-    color: #555555
-    text-decoration: none
-    button
-      margin: .25rem .25rem 0 0
+  .header
+    .type
+      span
+        margin: 0 1rem
+  .list
+    .item
+      padding: 0 1rem
+      margin: 2rem 0
+      border-left: 2px solid rgba(0,0,0,.1)
 </style>
 
 <script>
 export default {
   data: () => ({
-    list: [
-      {
-        name: "Fecyo 小程序",
-        info: "基于fecyo目前的系统，搞一套uniapp的单商户系统",
-      },
-      {
-        name: "WPS SDK",
-        info: "基于 wps sdk 实现供 app 调用的文档页面",
-      },
+    type: [
+      { name: "开发", tag: [{ name: "" }] },
+      { name: "设计", tag: [{ name: "UI" }, { name: "UX" }] },
+      { name: "产品", tag: [{ name: "" }] },
+      { name: "文案", tag: [{ name: "" }] },
+      { name: "市场", tag: [{ name: "" }] },
     ],
   }),
 };
