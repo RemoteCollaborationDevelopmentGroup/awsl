@@ -43,21 +43,59 @@
       ) GitHub
   div
     p 关于社区
+
+  h2 社区成员
+  .member
+    vs-table(v-model="selected")
+      template(#thead)
+        vs-tr
+          vs-th name
+          vs-th city
+          vs-th roles
+          vs-th skill
+          vs-th skill_ex
+          vs-th time
+          vs-th mark
+      template(#tbody)
+        vs-tr(
+          v-for="(user, i) in users",
+          :data="user.id",
+          :is-selected="selected == user.id",
+          :key="i"
+        )
+          vs-td {{ user.name }}
+          vs-td {{ user.city }}
+          vs-td {{ user.roles }}
+          vs-td {{ user.skill }}
+          vs-td {{ user.skill_ex }}
+          vs-td {{ user.time }}
+          vs-td {{ user.mark }}
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue";
 import VuesaxLogo from "~/components/VuesaxLogo.vue";
-
+import users from "~/assets/users.json";
 export default {
   components: {
     Logo,
     VuesaxLogo,
   },
+  data: () => ({
+    selected: null,
+    users: [],
+  }),
+  mounted() {
+    this.users = users;
+  },
 };
 </script>
 
 <style lang="sass" scoped>
+.member
+  max-width: 1280px
+  margin: auto
+
 .container
   margin: 0 auto
   min-height: calc(100vh - 120px - 64px)

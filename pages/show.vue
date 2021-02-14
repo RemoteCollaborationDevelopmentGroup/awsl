@@ -3,7 +3,7 @@
   h2 UI
   .uilist
     a(v-for="(item, i) in uilist", :key="i", :href="item.url", target="_blank")
-      img(:src="item.img")
+      img.NuxtImgx(:src="item.img")
       p {{ item.name }}
 </template>
 
@@ -31,6 +31,12 @@
       text-decoration: none
     a:hover
       color: #108775
+.NuxtImgx
+  animation: 1s appearxsx
+  margin: auto
+@keyframes appearxsx
+  0%
+    opacity: 0
 </style>
 
 <script>

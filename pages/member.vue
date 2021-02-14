@@ -1,7 +1,5 @@
 <template lang="pug">
 .member
-  //p 少年, 你渴望力量吗? (签订契约成为魔法少女吧!)
-  //p 众人拾柴火焰高 (上午一把火,下午派出所)
   vs-table(v-model="selected")
     template(#thead)
       vs-tr
@@ -26,9 +24,6 @@
         vs-td {{ user.skill_ex }}
         vs-td {{ user.time }}
         vs-td {{ user.mark }}
-    //template(#tfoot)
-    //  vs-tr
-    //    vs-td footer
 </template>
 
 <style lang="sass" scoped>

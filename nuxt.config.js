@@ -1,8 +1,5 @@
 export default {
-  server: {
-    port: 8000, //default 3000
-  },
-  // Global page headers (https://go.nuxtjs.dev/config-head)
+  server: { port: 8000 },
   head: {
     title: 'awsl',
     meta: [
@@ -12,32 +9,15 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: "/js/centcount.js" }
     ]
   },
-
-  // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-    'vuesax/dist/vuesax.css'
-  ],
-
-  // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    '@/plugins/vuesax'
-  ],
-
-  // Auto import components (https://go.nuxtjs.dev/config-components)
+  css: ['vuesax/dist/vuesax.css'],
+  plugins: ['@/plugins/vuesax'],
   components: true,
-
-  // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
-  buildModules: [
-  ],
-
-  // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [
-  ],
-
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-    extractCSS: true
-  }
+  buildModules: [],
+  modules: [],
+  build: { extractCSS: true }
 }

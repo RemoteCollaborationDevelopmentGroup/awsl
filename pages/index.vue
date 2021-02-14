@@ -200,22 +200,15 @@ export default {
     },
   },
 };
-
-//div.center.con-avatars(style="display:flex;")
-//div.container_index
-//  div 开发组能力范围 |
-//  div 开发组成员 |
-//  div 输出能力
 </script>
 
-<style>
-.container_index_back {
-  margin: 0 auto;
-  min-height: calc(100vh - 120px - 64px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="sass" scoped>
+.container_index_back
+  margin: 0 auto
+  min-height: calc(100vh - 120px - 64px)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
 </style>

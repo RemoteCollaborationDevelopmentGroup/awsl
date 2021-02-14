@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style lang="styl">
+<style lang="sass" scoped>
 .container_remote
   margin: 0 auto
   height: calc(100vh - 120px - 64px)
@@ -44,7 +44,6 @@ export default {
 .NuxtImg
   animation: 1s appearx
   margin: auto
-
 @keyframes appearx
   0%
     opacity: 0
