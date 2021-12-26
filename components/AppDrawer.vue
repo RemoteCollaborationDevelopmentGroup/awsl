@@ -1,16 +1,26 @@
 <template lang="pug">
-.background(@click="exit()", @keyup.esc="exit()", v-focus, tabindex="0")
-  .container(@click.stop)
+.background(
+  :class="{ show: show, hidden: !show }",
+  @click="exit()",
+  @keyup.esc="exit()",
+  v-focus,
+  tabindex="0"
+)
+  .container(:class="{ show: show, hidden: !show }", @click.stop)
     slot
 </template>
 
 <script>
 export default {
+  data: () => ({
+    show: true,
+  }),
   mounted() {
     this.stop();
   },
   methods: {
     exit() {
+      this.show = false;
       document.referrer === "" ? this.$router.push(".") : this.$router.go(-1);
       this.move();
     },
@@ -65,7 +75,6 @@ export default {
   bottom: 0;
   border-radius: 2rem 2rem 0 0;
   padding: 2rem;
-  animation: myfirst 0.75s;
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -74,12 +83,57 @@ export default {
   display: none; /* Chrome Safari */
 }
 
-@keyframes myfirst {
+/* show element */
+.background.show {
+  animation: showbackground 0.75s;
+}
+
+.background.hidden {
+  animation: hiddenbackground 0.75s;
+}
+
+.container.show {
+  animation: showcontainer 0.75s;
+}
+.container.hidden {
+  animation: hiddencontainer 0.75s;
+}
+
+@keyframes showbackground {
   0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hiddenbackground {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes showcontainer {
+  0% {
+    opacity: 0;
     transform: translate(0, 64px);
   }
   100% {
+    opacity: 1;
     transform: translate(0, 0);
+  }
+}
+@keyframes hiddencontainer {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 64px);
   }
 }
 </style>

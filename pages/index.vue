@@ -1,4 +1,13 @@
 <style lang="sass" scoped>
+.container_index_back
+  margin: 0 auto
+  min-height: calc(100vh - 120px - 64px)
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+
 ol.start
   list-style-type: none
   counter-reset: sectioncounter
@@ -32,6 +41,37 @@ ul
 
 <template lang="pug">
 .container_index
+  .container
+    p 发布者
+    p 筛选邀请工作者或小组接取任务(发布任务)
+      button(to="/task/create") 发布任务
+    p 即使不发布公开任务也可以寻找工作者
+    p -----------------------------------
+    p 工作者
+    p 筛选寻找合适的任务
+    p 筛选加入合适的小组(创建小组)
+    p -----------------------------------
+    p 议价问题, 由于没有标准
+    p -----------------------------------
+  .container
+    p 自由职业者需要什么来实现自由与职业?
+    p 通过什么形式
+    p 自由职业的崩解
+    p 达到什么目标结果? (对目标的展望, 现实的目标
+    p 1. 专注于擅长的事情
+    p 2. 高效的交接和免除会议, 能够贯彻目标方式描述与解答的
+    p 
+    p 其个人远程基本条件可能尚未成熟, 但有着强烈期望
+    p 其个人远程基本条件已经成熟, 需要运转资源交流
+    p 此站点是一个工具, 强调工具的即用性
+    p 1. 入门引导, 生态环境(小组/公会) (阅览并加入喜欢的小组)
+    p 如果小组存在的形式不是依赖于网站, 则获取到其填充的信息不够健壮, 不能够客观反映其真实状况
+    p 因而/
+    p 生态不成熟时, 因此需要此处具有关键性因素
+    p 即组织性, 领导性, 一致性
+    p 传统散落形式难以为继, 是 客户-平台-工人, 客户缺乏专业性且质量没有保障, 三方交接多以价格为基准而忽略质量和效率
+    p 信誉问题的跑路, 是为成本无限上升导致
+
   .header
     h1 86 位社区成员在远程协作
   .info
@@ -43,14 +83,6 @@ ul
     p 发布任务/ 发布项目/ 发布idea/ 创建组织/ 发布服务/
     p 如何提升自身价值而不是被调用?
     p 项目类型/ 沉淀/研发
-  //vs-avatar(
-  //  primary,
-  //  v-for="user in users",
-  //  :key="user.id",
-  //  @click="open_user(user.id)"
-  //)
-  //  template(v-if="user.avatar === ''", #text) {{ user.name }}
-  //  img(v-else, src="user.avatar")
   div 社区成员总数 / 活跃人数 / 小组
   div 项目组 开发组 产品组 数据组 文案组 设计组 交互组
   div 专长 web应用 / 桌面应用 / APP
@@ -134,66 +166,6 @@ ul
 
 <script>
 export default {
-  data: () => ({
-    users: [
-      {
-        id: "2",
-        name: "vvluo",
-        avatar: "",
-        roles: ["前端"],
-        skill: ["javascript", "typescript", "react", "vue", "html5", "小程序"],
-        skill_ex: [
-          "nodejs",
-          "java web",
-          "python flask",
-          "react native",
-          "flutter",
-        ],
-        city: "成都",
-        time: "955",
-      },
-      {
-        id: "3",
-        name: "Edmond",
-        avatar: "",
-        roles: ["后端"],
-        skill: ["java"],
-        skill_ex: ["javascript", "vue"],
-        city: "深圳",
-        time: "955",
-      },
-      {
-        id: "4",
-        name: "Kr",
-        avatar: "",
-        roles: ["文案"],
-        skill: ["写作"],
-        skill_ex: ["运营", "html", "css", "javascript"],
-        city: "绍兴",
-        time: "0",
-      },
-      {
-        id: "5",
-        name: "觉",
-        avatar: "",
-        roles: ["前端", "后端"],
-        skill: ["go", "javascript", "php", "python", "nodejs"],
-        skill_ex: ["dart", "java", "c"],
-        city: "杭州",
-        time: "0",
-      },
-      {
-        id: "6",
-        name: "fmrx",
-        avatar: "",
-        roles: ["后端"],
-        skill: ["java", "python"],
-        skill_ex: ["flutter", "小程序"],
-        city: "北京",
-        time: "996",
-      },
-    ],
-  }),
   methods: {
     open_user(id) {
       this.$router.push({ path: "/user/" + id });
@@ -201,14 +173,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass" scoped>
-.container_index_back
-  margin: 0 auto
-  min-height: calc(100vh - 120px - 64px)
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  text-align: center
-</style>
