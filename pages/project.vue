@@ -6,10 +6,10 @@
     li.active 招募中
     li 执行中
     li 归档
-  div
-    NuxtLink(
-      v-for="(item, i) in list",
-      :key="i",
+  .list
+    NuxtLink.item(
+      v-for="item in list",
+      :key="item.id",
       :to="`/project/${item.name}`"
     )
       h5 {{ item.name }}
@@ -33,6 +33,20 @@
 </template>
 
 <style lang="sass" scoped>
+.list
+  width: 600px
+  margin: 1rem auto
+  padding: 0
+  .item
+    display: block
+    background: rgba(0, 0, 0, 0.05)
+    border-radius: 5px
+    margin: 0.5rem
+    padding: 0.5rem 1rem
+    color: #555555
+    text-decoration: none
+    button
+      margin: .25rem .25rem 0 0
 .project
   >ul
     width: 600px
@@ -77,18 +91,6 @@ ul.nav
   li.active
     color: rgb(0, 197, 142)
     background: rgb(16, 135, 117)
-
-.task
-  a
-    display: block
-    background: rgba(0, 0, 0, 0.05)
-    border-radius: 5px
-    margin: 0.5rem
-    padding: 0.5rem 1rem
-    color: #555555
-    text-decoration: none
-    button
-      margin: .25rem .25rem 0 0
 </style>
 
 <script>
@@ -113,7 +115,8 @@ export default {
     ],
     list: [
       {
-        name: "WPS SDK",
+        id: "12",
+        name: "SPASXASXMK",
         info: "基于 wps sdk 实现供 app 调用的文档页面",
         role: ["前端", "后端"],
         member: [],

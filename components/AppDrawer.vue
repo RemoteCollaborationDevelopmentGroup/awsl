@@ -74,10 +74,12 @@ export default {
   right: 0;
   bottom: 0;
   border-radius: 2rem 2rem 0 0;
-  padding: 2rem;
+  padding: 2rem 4rem;
   overflow: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 .container::-webkit-scrollbar {
   display: none; /* Chrome Safari */
